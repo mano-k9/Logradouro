@@ -36,13 +36,13 @@ class Logradouro:
         posNum = sEndrco.find(' SN')
         if posNum >-1:
             num = 'SN'
-            endrco = sEndrc[0:posNum].replace(',','').strip()
+            endrco = sEndrc[0:posNum].replace(',','')
             cmplto = sEndrc[posNum+3:]
         else:
             posNum = sEndrco.find(' S/N')
             if posNum > -1:
                 num = 'SN'
-                endrco = sEndrc[0:posNum].replace(',','').strip()
+                endrco = sEndrc[0:posNum].replace(',','')
                 cmplto = sEndrc[posNum+4:]
         if posNum == -1:
             spEndrco = sEndrco.split()
