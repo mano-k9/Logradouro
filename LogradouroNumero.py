@@ -33,9 +33,18 @@ class Logradouro:
     cmplto = ''
     if type(sEndrc) == str:
         sEndrco = sEndrc.upper().replace(',',' ').replace('.',' ').replace(':',' ')
-        if sEndrco.find(' SN') >-1 or sEndrco.find(' S/N') > -1:
+        posNum = sEndrco.find(' SN')
+        if posNum >-1:
             num = 'SN'
+            endrco = sEndrc[0:posNum].replace(',','').strip()
+            cmplto = sEndrc[posNum+3:]
         else:
+            posNum = sEndrco.find(' S/N')
+            if posNum > -1:
+                num = 'SN'
+                endrco = sEndrc[0:posNum].replace(',','').strip()
+                cmplto = sEndrc[posNum+4:]
+        if posNum == -1:
             spEndrco = sEndrco.split()
             i = 0
             sLog1 = '.ALAMEDA.AL.AVENIDA.AV.RUA.R.ESTRADA.EST.TREVO.TRV.TRAVESSA.TV.BULEVAR.BOULEVAR.BLV.TREVO.TRV.TRAVESSA.TV.'
@@ -73,6 +82,4 @@ class Logradouro:
         posNum += len(num) + 1
         if cmplto == '':
             cmplto = sEndrc[posNum:]
-    return([endrco.rstrip(),num,cmplto.rstrip()])
-
-
+    return([endrco.strip(),num,cmplto.strip()])
