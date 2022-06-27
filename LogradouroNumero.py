@@ -51,7 +51,7 @@ class Logradouro:
                         comp = (sComp.find('.' + stEnd + '.') > -1)
                     if comp:
                         cmplto += (stEnd + ' ')
-                    elif stEnd.isdigit() and i > 0:
+                    elif stEnd.isdigit() and i > 1:
                         num = stEnd
                         break
                     elif '.N.NO.NUM.NUMERO.NÚMERO.'.find('.' + stEnd + '.'):
