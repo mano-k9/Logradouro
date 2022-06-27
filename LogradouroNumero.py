@@ -8,7 +8,7 @@ O algoritmo extrai o número e o complemento do endereco.
 Nao há nada de AI ou ML neste codigo :)
 Usa os tipos basicos de logradouro na variável sLog1 (rua, avenida, estrada, etc.), e nao o dominio completo dos correios.
 Mas sinta-se a vontade para complementar e adaptar para atender a sua necessidade.
-O algoritmo consegue extrair bem o numero e o complemento da maioria dos endereço, mas não de 100% dos casos
+O algoritmo consegue extrair bem o numero e o complemento da maioria dos endereços, mas não de 100% dos casos
 Em uma base de amostragem interna (que não posso compartilhar), o percentual de acerto chegou a 97%
 Obviamente, se o endereço estiver muito ruim, não espere milagre.
 """
