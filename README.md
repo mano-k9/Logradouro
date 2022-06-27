@@ -14,6 +14,9 @@
 ### ['110','CASA 18']
     
 endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
+
 objLog = Logradouro(endereco)
+
 numeroComplemento = objLog.numCmplto()
+
 print(numeroComplemento)
