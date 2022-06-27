@@ -1,7 +1,7 @@
 # Logradouro
 
 ### Código em Python.
-### O algoritmo extrai o número e o complemento do endereço.
+### O algoritmo extrai o logradouro, o número e o complemento do endereço.
 ### Não há nada de AI ou ML neste código :)
 ### Usa os tipos básicos de logradouro na variável sLog1 (rua, avenida, estrada, etc.), e não o domínio completo dos correios.
 ### Mas sinta-se a vontade para complementar e adaptar para atender a sua necessidade.
@@ -11,7 +11,7 @@
 
 ### EXEMPLO
 ### O código abaixo irá criar o array numeroComplemento com dois elementos:
-### ['110','CASA 18']
+### ['AVENIDA VITORINO NONATO','110','CASA 18']
     
 endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
 
