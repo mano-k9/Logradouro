@@ -10,7 +10,7 @@
 ### Obviamente, se o endereço estiver muito ruim, não espere milagre.
 
 ### EXEMPLO
-### O código abaixo irá criar o array numeroComplemento com dois elementos:
+### O código abaixo irá criar o array numeroComplemento com três elementos:
 ### ['AVENIDA VITORINO NONATO','110','CASA 18']
     
 endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
