@@ -3,7 +3,7 @@ Created on Fri Jun 17 13:41:20 2022
 
 @author: mano-K9
 
-O algoritmo extrai o número e o complemento do endereco.
+O algoritmo extrai o logradouro, o número e o complemento do endereco.
 Nao há nada de AI ou ML neste codigo :)
 Usa os tipos basicos de logradouro (rua, avenida, estrada, etc.), e nao o dominio completo dos correios.
 Ver variável "self.tipoBasicoLogradouro"
@@ -18,11 +18,25 @@ Obviamente, se o endereço estiver muito ruim, não espere milagre.
 """
 ### EXEMPLO:
     
-endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
 objLog = Logradouro()
-numeroComplemento = objLog.numCmplto(endereco)
-print(numeroComplemento)
 
+print('')
+print(objLog.numCmplto("rua da esquina s/n beco das flores"))
+print('')
+print(objLog.numCmplto("av. luis cartlos prestes, 150 apto 15"))
+print('')
+print(objLog.numCmplto("blv dos diamantes, 15 - casa 12"))
+
+"""
+
+"""
+### RESULTADO DO CÓDIGO ACIMA:
+
+['RUA DA ESQUINA', 'SN', 'BECO DAS FLORES']
+
+['AV LUIS CARTLOS PRESTES', '150', 'APTO 15']
+
+['BLV DOS DIAMANTES', '15', '- CASA 12']
 """
 
 class Logradouro:
