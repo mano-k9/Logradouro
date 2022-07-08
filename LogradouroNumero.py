@@ -1,14 +1,16 @@
-# -*- coding: utf-8 -*-
 """
 Created on Fri Jun 17 13:41:20 2022
 
 @author: mano-K9
 
-O algoritmo extrai o logradouro, o número e o complemento do endereco.
+O algoritmo extrai o número e o complemento do endereco.
 Nao há nada de AI ou ML neste codigo :)
-Usa os tipos basicos de logradouro na variável sLog1 (rua, avenida, estrada, etc.), e nao o dominio completo dos correios.
-Mas sinta-se a vontade para baixar em sua máquina e adaptar para atender a sua necessidade.
-O algoritmo consegue extrair bem o numero e o complemento da maioria dos endereços, mas não de 100% dos casos
+Usa os tipos basicos de logradouro (rua, avenida, estrada, etc.), e nao o dominio completo dos correios.
+Ver variável "self.tipoBasicoLogradouro"
+A tabela completa de tipos de logradouro dos correios se encontra em:
+http://portal.pmf.sc.gov.br/arquivos/arquivos/pdf/04_01_2010_10.27.25.2b615e6755138defe1bdb00f1c86031f.PDF
+Sinta-se a vontade para complementar e incluir os tipos de logradouro as suas necessidades.
+O algoritmo consegue extrair bem o numero e o complemento da maioria dos casos, mas não de 100% dos casos
 Em uma base de amostragem interna (que não posso compartilhar), o percentual de acerto chegou a 97%
 Obviamente, se o endereço estiver muito ruim, não espere milagre.
 """
@@ -16,29 +18,20 @@ Obviamente, se o endereço estiver muito ruim, não espere milagre.
 """
 ### EXEMPLO:
     
+endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
 objLog = Logradouro()
-
-print('')
-print(objLog.numCmplto("rua da esquina s/n beco das flores"))
-print('')
-print(objLog.numCmplto("av. luis cartlos prestes, 150 apto 15"))
-print('')
-print(objLog.numCmplto("blv dos diamantes, 15 - casa 12"))
-
-# Resultado do Exemplo:
-
-['rua da esquina', 'SN', 'beco das flores']
-
-['AV LUIS CARTLOS PRESTES', '150', 'apto 15']
-
-['BLV DOS DIAMANTES', '15', '- casa 12']
+numeroComplemento = objLog.numCmplto(endereco)
+print(numeroComplemento)
 
 """
 
 class Logradouro:
   def __init__(self):
-# reservei a variável "self.endrco" para uso futuro
-    self.endrco = ''
+# lista parcial dos tipos de logradouro
+# consulte a lista completa dos correios para incluir algum tipo que vc acha importante
+    self.tipoBasicoLogradouro = '.ALAMEDA.AL.AVENIDA.AV.RUA.R.ESTRADA.EST.TREVO.TRV.BULEVAR.BOULEVAR.BLV.VIA.TRAVESSA.TRAV.TVS.TRVSA.TV.'
+    self.tipoBasicoLogradouroSemNumero = '.RODOVIA.ROD.RD.BR.KM.FAZENDA.FAZ.FZ.CHACARA.CHÁCARA.CHC.CHAC.SITIO.SÍTIO.ST.SIT.'
+    self.tipoComplemento = '.QUADRA.QD.CONJUNTO.CJ.APARTAMENTO.AP.APTO.CASA.C.CS.BLOCO.BL.BLCO.CONDOMINIO.COND.CD.'
   def numCmplto(self, endereco):
     endrco = sEndrc = endereco.upper()
     num = ''
@@ -59,9 +52,9 @@ class Logradouro:
         if posNum == -1:
             spEndrco = sEndrco.split()
             i = 0
-            sLog1 = '.ALAMEDA.AL.AVENIDA.AV.RUA.R.ESTRADA.EST.TREVO.TRV.TRAVESSA.TV.BULEVAR.BOULEVAR.BLV.TREVO.TRV.TRAVESSA.TV.'
-            sLog2 = '.RODOVIA.ROD.RD.BR.KM.FAZENDA.FAZ.FZ.CHACARA.CHÁCARA.CHC.CHAC.SITIO.SÍTIO.ST.SIT.'
-            sComp = '.QUADRA.QD.CONJUNTO.CJ.APARTAMENTO.AP.APTO.CASA.C.CS.BLOCO.BL.BLCO.CONDOMINIO.COND.CD.'
+            sLog1 = self.tipoBasicoLogradouro
+            sLog2 = self.tipoBasicoLogradouroSemNumero
+            sComp = self.tipoComplemento
             via = (sLog1.find(spEndrco[0]) > -1)
             naoVia = (sLog2.find(spEndrco[0]) > -1)
             comp = False
@@ -95,3 +88,4 @@ class Logradouro:
         if cmplto == '':
             cmplto = sEndrc[posNum:]
     return([endrco.strip(),num,cmplto.strip()])
+
