@@ -16,10 +16,14 @@ Obviamente, se o endereço estiver muito ruim, não espere milagre.
 """
 ### EXEMPLO:
     
-endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
 objLog = Logradouro()
-numeroComplemento = objLog.numCmplto(endereco)
-print(numeroComplemento)
+
+print('')
+print(objLog.numCmplto("rua da esquina s/n beco das flores"))
+print('')
+print(objLog.numCmplto("av. luis cartlos prestes, 150 apto 15"))
+print('')
+print(objLog.numCmplto("blv dos diamantes, 15 - casa 12"))
 
 """
 
