@@ -17,18 +17,18 @@ Obviamente, se o endereço estiver muito ruim, não espere milagre.
 ### EXEMPLO:
     
 endereco = "AVENIDA VITORINO NONATO, 110  CASA 18"
-objLog = Logradouro(endereco)
-numeroComplemento = objLog.numCmplto()
+objLog = Logradouro()
+numeroComplemento = objLog.numCmplto(endereco)
 print(numeroComplemento)
 
 """
 
 class Logradouro:
-  def __init__(self, endrco):
-    self.endrco = endrco
-  def numCmplto(self):
-    sEndrc = self.endrco
-    endrco = sEndrc
+  def __init__(self):
+# reservei a variável "self.endrco" para uso futuro
+    self.endrco = ''
+  def numCmplto(self, endereco):
+    endrco = sEndrc = endereco
     num = ''
     cmplto = ''
     if type(sEndrc) == str:
