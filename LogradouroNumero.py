@@ -9,7 +9,7 @@ Usa os tipos basicos de logradouro (rua, avenida, estrada, etc.), e nao o domini
 Ver variável "self.tipoBasicoLogradouro"
 A tabela completa de tipos de logradouro dos correios se encontra em:
 http://portal.pmf.sc.gov.br/arquivos/arquivos/pdf/04_01_2010_10.27.25.2b615e6755138defe1bdb00f1c86031f.PDF
-Sinta-se a vontade para complementar e incluir os tipos de logradouro as suas necessidades.
+Sinta-se a vontade para complementar e incluir os tipos de logradouro para suas necessidades.
 O algoritmo consegue extrair bem o numero e o complemento da maioria dos casos, mas não de 100% dos casos
 Em uma base de amostragem interna (que não posso compartilhar), o percentual de acerto chegou a 97%
 Obviamente, se o endereço estiver muito ruim, não espere milagre.
