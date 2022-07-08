@@ -25,6 +25,14 @@ print(objLog.numCmplto("av. luis cartlos prestes, 150 apto 15"))
 print('')
 print(objLog.numCmplto("blv dos diamantes, 15 - casa 12"))
 
+# Resultado do Exemplo:
+
+['rua da esquina', 'SN', 'beco das flores']
+
+['AV LUIS CARTLOS PRESTES', '150', 'apto 15']
+
+['BLV DOS DIAMANTES', '15', '- casa 12']
+
 """
 
 class Logradouro:
@@ -32,11 +40,11 @@ class Logradouro:
 # reservei a variável "self.endrco" para uso futuro
     self.endrco = ''
   def numCmplto(self, endereco):
-    endrco = sEndrc = endereco
+    endrco = sEndrc = endereco.upper()
     num = ''
     cmplto = ''
     if type(sEndrc) == str:
-        sEndrco = sEndrc.upper().replace(',',' ').replace('.',' ').replace(':',' ')
+        sEndrco = sEndrc.replace(',',' ').replace('.',' ').replace(':',' ')
         posNum = sEndrco.find(' SN')
         if posNum >-1:
             num = 'SN'
