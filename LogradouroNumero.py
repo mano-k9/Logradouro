@@ -47,34 +47,34 @@ class Logradouro:
     self.tipoBasicoLogradouroSemNumero = '.RODOVIA.ROD.RD.BR.KM.FAZENDA.FAZ.FZ.CHACARA.CHÁCARA.CHC.CHAC.SITIO.SÍTIO.ST.SIT.'
     self.tipoComplemento = '.QUADRA.QD.CONJUNTO.CJ.APARTAMENTO.AP.APTO.CASA.C.CS.BLOCO.BL.BLCO.CONDOMINIO.COND.CD.'
   def numCmplto(self, endereco):
-    endrco = sEndrc = endereco.upper()
+    logradouro = enderecoUpper = endereco.upper()
     num = ''
     cmplto = ''
-    if type(sEndrc) == str:
-        sEndrco = sEndrc.replace(',',' ').replace('.',' ').replace(':',' ')
-        posNum = sEndrco.find(' SN')
+    if type(enderecoUpper) == str:
+        enderecoUpperLimpo = enderecoUpper.replace(',',' ').replace('.',' ').replace(':',' ')
+        posNum = enderecoUpperLimpo.find(' SN')
         if posNum >-1:
             num = 'SN'
-            endrco = sEndrc[0:posNum].replace(',','')
-            cmplto = sEndrc[posNum+3:]
+            logradouro = enderecoUpper[0:posNum].replace(',','')
+            cmplto = enderecoUpper[posNum+3:]
         else:
-            posNum = sEndrco.find(' S/N')
+            posNum = enderecoUpperLimpo.find(' S/N')
             if posNum > -1:
                 num = 'SN'
-                endrco = sEndrc[0:posNum].replace(',','')
-                cmplto = sEndrc[posNum+4:]
+                logradouro = enderecoUpper[0:posNum].replace(',','')
+                cmplto = enderecoUpper[posNum+4:]
         if posNum == -1:
-            spEndrco = sEndrco.split()
+            enderecoSplit = enderecoUpperLimpo.split()
             i = 0
             sLog1 = self.tipoBasicoLogradouro
             sLog2 = self.tipoBasicoLogradouroSemNumero
             sComp = self.tipoComplemento
-            via = (sLog1.find(spEndrco[0]) > -1)
-            naoVia = (sLog2.find(spEndrco[0]) > -1)
+            via = (sLog1.find(enderecoSplit[0]) > -1)
+            naoVia = (sLog2.find(enderecoSplit[0]) > -1)
             comp = False
             if via:
-                endrco = ''
-                for stEnd in spEndrco:
+                logradouro = ''
+                for stEnd in enderecoSplit:
                     if not comp:
                         comp = (sComp.find('.' + stEnd + '.') > -1)
                     if comp:
@@ -83,23 +83,24 @@ class Logradouro:
                         num = stEnd
                         break
                     elif '.N.NO.NUM.NUMERO.NÚMERO.'.find('.' + stEnd + '.'):
-                        endrco += (stEnd + ' ')
+                        logradouro += (stEnd + ' ')
                     i += 1
             elif naoVia:
                 num = ''
             else:
-                for stEnd in spEndrco:
+                for stEnd in enderecoSplit:
                     if stEnd.isdigit():
                         if i > 0:
                             num = stEnd
                             break                        
                     i += 1
     if num != '':
-        posNum = sEndrc.find(num)
-        if endrco == sEndrc:
-            endrco = sEndrc[0:posNum].replace(',','').strip()
+        posNum = enderecoUpper.find(num)
+        if logradouro == enderecoUpper:
+            logradouro = enderecoUpper[0:posNum].replace(',','').strip()
         posNum += len(num) + 1
         if cmplto == '':
-            cmplto = sEndrc[posNum:]
-    return([endrco.strip(),num,cmplto.strip()])
+            cmplto = enderecoUpper[posNum:]
+    return([logradouro.strip(),num,cmplto.strip()])
+
 
